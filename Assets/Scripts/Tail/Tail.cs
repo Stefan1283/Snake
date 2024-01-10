@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class Tail : MonoBehaviour
+public class Tail : NetworkBehaviour
 {
     Snake snake;
     Transform tailTarget;
 
+    /*
     void Start()
     {
         snake = FindObjectOfType<Snake>();
@@ -24,4 +26,5 @@ public class Tail : MonoBehaviour
             tailTarget.position,
             snake.Speed * Time.deltaTime * 3f);
     }
+    */
 }

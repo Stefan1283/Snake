@@ -8,7 +8,7 @@ public class Food : NetworkBehaviour
 {
     [SerializeField] GameObject particlePrefab;
 
-    public static event Action ServerOnFoodEaten;
+    public static event Action <GameObject> ServerOnFoodEaten;
 
     void OnTriggerEnter(Collider other)
     {
@@ -17,11 +17,11 @@ public class Food : NetworkBehaviour
             return; 
         } 
         
-        FindObjectOfType<Snake>().AddTail();
+        //FindObjectOfType<Snake>().AddTail();
         GameObject boom = Instantiate
             (particlePrefab, transform.position, particlePrefab.transform.rotation);
         Destroy(boom, 3f);
         NetworkServer.Destroy(gameObject);
-        ServerOnFoodEaten?.Invoke();
+        ServerOnFoodEaten?.Invoke(other.gameObject);       
     }
 }
