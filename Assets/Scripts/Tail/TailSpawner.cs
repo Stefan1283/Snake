@@ -28,7 +28,6 @@ public class TailSpawner : NetworkBehaviour
             transform.position :
             Tails[Tails.Count - 1].transform.position;
         var tailInstance = Instantiate(tailPrefab, clonePosition, Quaternion.identity);
-        NetworkServer.Spawn(tailInstance);
-        Tails.Add(tailInstance);
+        NetworkServer.Spawn(tailInstance, connectionToClient);
     }
 }
